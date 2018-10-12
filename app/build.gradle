@@ -1,0 +1,45 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+  compileSdkVersion rootProject.ext.compile_sdk_version
+  defaultConfig {
+    applicationId "com.smassive.bitcointicker"
+    minSdkVersion rootProject.ext.min_sdk_version
+    targetSdkVersion rootProject.ext.target_sdk_version
+    versionCode 1
+    versionName "1.0"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+}
+
+kapt {
+  generateStubs = true
+}
+
+dependencies {
+  implementation project(':core')
+  implementation project(':charts')
+
+  implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+  implementation "androidx.appcompat:appcompat:$androidx_version"
+  implementation "android.arch.navigation:navigation-fragment-ktx:$nav_version"
+  implementation "android.arch.navigation:navigation-ui-ktx:$nav_version"
+  implementation "com.google.android.material:material:$androidx_version"
+  implementation "androidx.constraintlayout:constraintlayout:$constraint_layout_version"
+
+  implementation "com.google.dagger:dagger:$dagger_version"
+  kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+  testImplementation 'junit:junit:4.12'
+  androidTestImplementation 'androidx.test:runner:1.1.0-beta01'
+  androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-beta01'
+}
