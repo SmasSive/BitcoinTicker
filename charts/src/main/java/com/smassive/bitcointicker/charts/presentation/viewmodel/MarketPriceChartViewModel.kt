@@ -9,10 +9,11 @@ import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
+import javax.inject.Named
 
 class MarketPriceChartViewModel @Inject constructor(private val getMarketPriceChartUseCase: GetMarketPriceChartUseCase,
-                                                    subscribeOn: Scheduler = Schedulers.io(),
-                                                    observeOn: Scheduler = AndroidSchedulers.mainThread())
+                                                    @Named("subscribeOn") subscribeOn: Scheduler = Schedulers.io(),
+                                                    @Named("observeOn") observeOn: Scheduler = AndroidSchedulers.mainThread())
   : BaseViewModel(subscribeOn, observeOn) {
 
   private val marketPriceChart = MutableLiveData<Resource<MarketPriceChart>>()
