@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-allopen'
 
 android {
   compileSdkVersion rootProject.ext.compile_sdk_version
@@ -23,6 +24,10 @@ android {
   }
 }
 
+allOpen {
+  annotation("com.smassive.bitcointicker.core.infrastructure.annotation.OpenClass")
+}
+
 dependencies {
   implementation project(':core')
 
@@ -33,9 +38,13 @@ dependencies {
   api "com.google.dagger:dagger:$dagger_version"
   kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
-  testImplementation 'junit:junit:4.12'
+  testImplementation "junit:junit:$junit_version"
+  testImplementation "org.assertj:assertj-core:$assert_j_version"
   testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
+  testImplementation "org.mockito:mockito-core:$mockito_version"
+  testImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
 
   androidTestImplementation 'com.android.support.test:runner:1.0.2'
   androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+  androidTestImplementation "org.mockito:mockito-android:$mockito_version"
 }
