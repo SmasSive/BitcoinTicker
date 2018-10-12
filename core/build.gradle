@@ -49,7 +49,7 @@ dependencies {
 
   api "com.jakewharton.threetenabp:threetenabp:$three_ten_abp_version"
 
-  testImplementation 'junit:junit:4.12'
+  testImplementation "junit:junit:$junit_version"
   testImplementation "org.threeten:threetenbp:$three_ten_version"
   testImplementation "org.assertj:assertj-core:$assert_j_version"
 
