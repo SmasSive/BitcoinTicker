@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import com.smassive.bitcointicker.charts.R
 import com.smassive.bitcointicker.charts.infrastructure.injector.component.ChartComponent
 import com.smassive.bitcointicker.charts.presentation.viewmodel.MarketPriceChartViewModel
+import com.smassive.bitcointicker.core.presentation.model.Status
 import com.smassive.bitcointicker.core.presentation.view.BaseActivity
 import com.smassive.bitcointicker.core.presentation.view.BaseFragment
 import com.smassive.bitcointicker.core.util.TAG
@@ -22,8 +23,12 @@ class ChartFragment : BaseFragment() {
     super.onActivityCreated(savedInstanceState)
 
     val marketPriceChartViewModel = ViewModelProviders.of(this, viewModelFactory)[MarketPriceChartViewModel::class.java]
-    marketPriceChartViewModel.getMarketPriceChart().observeNonNull(this) {
-      Log.d(TAG, "Chart description: ${it.description}")
+    marketPriceChartViewModel.getMarketPriceChart().observeNonNull(this) { result ->
+      when (result.status) {
+        Status.SUCCESS -> Log.d(TAG, "Chart description: ${result.data?.description}")
+        Status.ERROR -> Log.e(TAG, "ERROR loading chart data")
+        Status.LOADING -> Log.d(TAG, "LOADING chart data")
+      }
     }
   }
 
