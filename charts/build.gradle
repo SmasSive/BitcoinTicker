@@ -40,6 +40,8 @@ dependencies {
 
   implementation "com.github.PhilJay:MPAndroidChart:$mp_chart_version"
 
+  api "com.jakewharton.threetenabp:threetenabp:$three_ten_abp_version"
+
   testImplementation "junit:junit:$junit_version"
   testImplementation "org.assertj:assertj-core:$assert_j_version"
   testImplementation "androidx.arch.core:core-testing:$lifecycle_version"

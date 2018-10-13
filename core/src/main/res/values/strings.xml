@@ -1,4 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-  <string name="app_name">core</string>
+  <string name="app_name">Bitcoin Ticker</string>
   <string name="error_generic_no_data">No data available</string>
+
+  <!-- chart -->
+  <string name="market_price_title">Market Price (%1$s)</string>
+  <string name="unit_usd">USD</string>
 </resources>

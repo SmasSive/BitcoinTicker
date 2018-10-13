@@ -5,14 +5,17 @@ import android.view.View
 import android.widget.TextView
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import com.github.mikephil.charting.components.XAxis
 import com.smassive.bitcointicker.charts.R
-import com.smassive.bitcointicker.charts.domain.model.MarketPriceChart
 import com.smassive.bitcointicker.charts.infrastructure.injector.component.ChartComponent
+import com.smassive.bitcointicker.charts.presentation.model.MarketPriceChartViewData
+import com.smassive.bitcointicker.charts.presentation.model.formatter.DateValueFormatter
 import com.smassive.bitcointicker.charts.presentation.viewmodel.MarketPriceChartViewModel
 import com.smassive.bitcointicker.core.presentation.model.Status
 import com.smassive.bitcointicker.core.presentation.view.BaseActivity
 import com.smassive.bitcointicker.core.presentation.view.BaseFragment
 import com.smassive.bitcointicker.core.util.observeNonNull
+import kotlinx.android.synthetic.main.fragment_chart.chart
 import kotlinx.android.synthetic.main.fragment_chart.chartLayout
 import kotlinx.android.synthetic.main.fragment_chart.chartLoading
 import kotlinx.android.synthetic.main.fragment_chart.chartSubTitle
@@ -38,10 +41,28 @@ class ChartFragment : BaseFragment() {
     }
   }
 
-  private fun addChartData(marketPriceChart: MarketPriceChart) {
-    chartTitle.text = "Market Price (USD)"
-    chartSubTitle.text = marketPriceChart.description
+  private fun addChartData(marketPriceChart: MarketPriceChartViewData) {
+    with(marketPriceChart) {
+      chartTitle.text = title
+      chartSubTitle.text = description
+      chart.data = data
+    }
+    configureChart()
     showChart()
+  }
+
+  private fun configureChart() {
+    with(chart) {
+      description.isEnabled = false
+      axisRight.isEnabled = false
+      setPinchZoom(false)
+      setScaleEnabled(false)
+      isDoubleTapToZoomEnabled = false
+      isHighlightPerDragEnabled = false
+      isHighlightPerTapEnabled = false
+      xAxis.valueFormatter = DateValueFormatter()
+      xAxis.position = XAxis.XAxisPosition.BOTTOM
+    }
   }
 
   private fun showError(message: String = getString(com.smassive.bitcointicker.core.R.string.error_generic_no_data)) {
@@ -61,6 +82,7 @@ class ChartFragment : BaseFragment() {
     chartLayout.visibility = View.VISIBLE
     chartLoading.visibility = View.GONE
     errorLayout.visibility = View.GONE
+    chart.invalidate()
   }
 
   override fun getLayoutId(): Int {
