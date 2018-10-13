@@ -1,3 +1,4 @@
 <resources>
   <string name="app_name">core</string>
+  <string name="error_generic_no_data">No data available</string>
 </resources>

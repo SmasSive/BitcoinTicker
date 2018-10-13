@@ -2,19 +2,79 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
 
-  <TextView
-      android:id="@+id/testString"
-      android:layout_width="wrap_content"
-      android:layout_height="wrap_content"
-      android:text="Hello Fragment!"
-      app:layout_constraintBottom_toBottomOf="parent"
+  <androidx.constraintlayout.widget.ConstraintLayout
+      android:id="@+id/chartLayout"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
       app:layout_constraintLeft_toLeftOf="parent"
       app:layout_constraintRight_toRightOf="parent"
       app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      android:visibility="gone"
+      >
+
+    <TextView
+        android:id="@+id/chartTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Market Price (USD)"
+        style="@style/TextAppearance.Title"
+        android:layout_marginTop="@dimen/space_big"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/chartSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Average USD market price across major bitcoin exchanges."
+        style="@style/TextAppearance"
+        android:layout_marginTop="@dimen/space_normal"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chartTitle"
+        />
+
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chart"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/space_big"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/chartSubTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
+
+  </androidx.constraintlayout.widget.ConstraintLayout>
+
+  <ProgressBar
+      android:id="@+id/chartLoading"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="@dimen/space_big"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
       />
+
+  <include
+      android:id="@+id/errorLayout"
+      app:layout_constraintLeft_toLeftOf="parent"
+      app:layout_constraintRight_toRightOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      layout="@layout/error_layout"
+      android:visibility="gone"
+      />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

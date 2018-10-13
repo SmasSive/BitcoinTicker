@@ -24,14 +24,14 @@ class MarketPriceChartViewModel @Inject constructor(private val getMarketPriceCh
   fun getMarketPriceChart(): MutableLiveData<Resource<MarketPriceChart>> = marketPriceChart
 
   private fun loadMarketPriceChart() {
-    getMarketPriceChartUseCase.getMarketPriceChart().execute(onMarketPriceRetrieved(), onMarketPriceErrored())
+    getMarketPriceChartUseCase.getMarketPriceChart().execute(onMarketPriceChartRetrieved(), onMarketPriceChartErrored())
   }
 
-  private fun onMarketPriceRetrieved(): (MarketPriceChart) -> Unit = {
+  private fun onMarketPriceChartRetrieved(): (MarketPriceChart) -> Unit = {
     marketPriceChart.postValue(Resource.success(it))
   }
 
-  private fun onMarketPriceErrored(): (Throwable) -> Unit = {
+  private fun onMarketPriceChartErrored(): (Throwable) -> Unit = {
     marketPriceChart.postValue(Resource.error(it.message ?: "Unknown error", null))
   }
 }
