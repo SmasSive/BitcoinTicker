@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class UnitMapper @Inject constructor() {
 
-  fun map(unit: String): Unit {
+  fun map(unit: String?): Unit {
     return when (unit) {
       UnitDto.USD -> Unit.Usd
       else -> throw UnitNotSupportedException(unit)

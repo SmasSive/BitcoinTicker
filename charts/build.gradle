@@ -42,6 +42,10 @@ dependencies {
   api "com.google.dagger:dagger:$dagger_version"
   kapt "com.google.dagger:dagger-compiler:$dagger_version"
 
+  api "androidx.room:room-runtime:$room_version"
+  kapt "androidx.room:room-compiler:$room_version"
+  api "androidx.room:room-rxjava2:$room_version"
+
   implementation "com.github.PhilJay:MPAndroidChart:$mp_chart_version"
 
   api "com.jakewharton.threetenabp:threetenabp:$three_ten_abp_version"

@@ -52,6 +52,10 @@ dependencies {
   api "com.squareup.okhttp3:okhttp:$ok_http_version"
   api "com.squareup.okhttp3:logging-interceptor:$ok_http_version"
 
+  api "androidx.room:room-runtime:$room_version"
+  kapt "androidx.room:room-compiler:$room_version"
+  api "androidx.room:room-rxjava2:$room_version"
+
   api "com.jakewharton.threetenabp:threetenabp:$three_ten_abp_version"
 
   testImplementation "junit:junit:$junit_version"

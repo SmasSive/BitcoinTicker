@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class PeriodMapper @Inject constructor() {
 
-  fun map(period: String): Period {
+  fun map(period: String?): Period {
     return when (period) {
       PeriodDto.DAY -> Period.Day
       else -> throw PeriodNotSupportedException(period)

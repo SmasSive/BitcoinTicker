@@ -2,8 +2,8 @@ package com.smassive.bitcointicker.charts.data.datasource.remote.model.mapper
 
 import com.smassive.bitcointicker.charts.data.datasource.remote.model.ChartMarketPriceDto
 import com.smassive.bitcointicker.charts.domain.model.MarketPriceChart
-import com.smassive.bitcointicker.core.data.model.mapper.UnitMapper
 import com.smassive.bitcointicker.core.data.model.mapper.PeriodMapper
+import com.smassive.bitcointicker.core.data.model.mapper.UnitMapper
 import javax.inject.Inject
 
 class ChartMarketPriceDtoMapper @Inject constructor(private val chartValuesDtoMapper: ChartValuesDtoMapper,
