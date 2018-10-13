@@ -47,6 +47,7 @@ dependencies {
   api "com.jakewharton.threetenabp:threetenabp:$three_ten_abp_version"
 
   testImplementation "junit:junit:$junit_version"
+  testImplementation "org.threeten:threetenbp:$three_ten_version"
   testImplementation "org.assertj:assertj-core:$assert_j_version"
   testImplementation "androidx.arch.core:core-testing:$lifecycle_version"
   testImplementation "org.mockito:mockito-core:$mockito_version"
