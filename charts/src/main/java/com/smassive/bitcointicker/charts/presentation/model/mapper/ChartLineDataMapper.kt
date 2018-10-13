@@ -18,7 +18,7 @@ class ChartLineDataMapper @Inject constructor(private val dimenProvider: DimenPr
         setDrawCircles(false)
         setDrawValues(false)
         lineWidth = dimenProvider.provideDimen(R.dimen.chart_line_width)
-        color = R.color.colorAccent
+        color = R.color.colorPrimary
       }
     })
   }

@@ -2,6 +2,7 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-allopen'
 
 android {
   compileSdkVersion rootProject.ext.compile_sdk_version
@@ -25,6 +26,10 @@ android {
 
 kapt {
   generateStubs = true
+}
+
+allOpen {
+  annotation("com.smassive.bitcointicker.core.infrastructure.annotation.OpenClass")
 }
 
 dependencies {
