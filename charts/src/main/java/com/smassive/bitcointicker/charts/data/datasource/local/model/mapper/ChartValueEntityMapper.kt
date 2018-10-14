@@ -12,7 +12,7 @@ class ChartValueEntityMapper @Inject constructor(private val dateMapper: DateMap
     return chartValueEntities.map { TimePriceChartValue(dateMapper.map(it.x.toLong()), it.y) }
   }
 
-  fun maptoEntity(chartValuesDto: List<ChartValueDto>, chartName: String): List<ChartValueEntity> {
+  fun mapToEntity(chartValuesDto: List<ChartValueDto>, chartName: String): List<ChartValueEntity> {
     return chartValuesDto.map { ChartValueEntity(it.timestamp.toDouble(), it.y, chartName) }
   }
 }

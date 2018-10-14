@@ -33,7 +33,7 @@ class ChartRepository @Inject constructor(private val chartsApiClient: ChartsApi
     return chartsApiClient.getChart(ChartNameDto.MARKET_PRICE)
         .doOnSuccess { chartMarketPriceDto ->
           chartDao.insert(chartEntityMapper.map(chartMarketPriceDto, ChartNameDto.MARKET_PRICE))
-          chartValueDao.insertAll(chartValueEntityMapper.maptoEntity(chartMarketPriceDto.values, ChartNameDto.MARKET_PRICE))
+          chartValueDao.insertAll(chartValueEntityMapper.mapToEntity(chartMarketPriceDto.values, ChartNameDto.MARKET_PRICE))
         }
         .map { chartMarketPriceDtoMapper.map(it) }
         .toFlowable()
