@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
   <string name="app_name">Bitcoin Ticker</string>
+  <string name="error_generic_unknown">Unknown error</string>
   <string name="error_generic_no_data">No data available</string>
 
   <!-- chart -->

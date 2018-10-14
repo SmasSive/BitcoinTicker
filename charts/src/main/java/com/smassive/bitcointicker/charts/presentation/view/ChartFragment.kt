@@ -37,8 +37,8 @@ class ChartFragment : BaseFragment() {
     val marketPriceChartViewModel = ViewModelProviders.of(this, viewModelFactory)[MarketPriceChartViewModel::class.java]
     marketPriceChartViewModel.getMarketPriceChart().observeNonNull(this) { result ->
       when (result.status) {
-        Status.SUCCESS -> result.data?.let { addChartData(it) } ?: showError()
-        Status.ERROR -> result.message?.let { showError(result.message!!) } ?: showError()
+        Status.SUCCESS -> result.data?.let { addChartData(it) }
+        Status.ERROR -> result.message?.let { showError(result.message!!) }
         Status.LOADING -> showLoading()
       }
     }
@@ -68,7 +68,7 @@ class ChartFragment : BaseFragment() {
     }
   }
 
-  private fun showError(message: String = getString(com.smassive.bitcointicker.core.R.string.error_generic_no_data)) {
+  private fun showError(message: String) {
     chartLoading.visibility = View.GONE
     chartLayout.visibility = View.GONE
     errorLayout.visibility = View.VISIBLE

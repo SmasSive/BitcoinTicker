@@ -14,6 +14,7 @@ import com.smassive.bitcointicker.charts.presentation.model.mapper.ChartLineData
 import com.smassive.bitcointicker.charts.presentation.model.mapper.MarketPriceChartViewDataMapper
 import com.smassive.bitcointicker.charts.presentation.model.mapper.UnitViewDataMapper
 import com.smassive.bitcointicker.core.R
+import com.smassive.bitcointicker.core.data.exception.NoDataException
 import com.smassive.bitcointicker.core.domain.model.Period
 import com.smassive.bitcointicker.core.domain.model.Unit
 import com.smassive.bitcointicker.core.presentation.model.Status
@@ -40,7 +41,8 @@ class MarketPriceChartViewModelShould {
   private val marketPriceChartViewDataMapper = MarketPriceChartViewDataMapper(chartLineDataMapper, unitViewDataMapper, stringProvider)
 
   private val marketPriceChartViewModel by lazy {
-    MarketPriceChartViewModel(getMarketPriceChartUseCase, marketPriceChartViewDataMapper, Schedulers.trampoline(), Schedulers.trampoline())
+    MarketPriceChartViewModel(getMarketPriceChartUseCase, marketPriceChartViewDataMapper, stringProvider, Schedulers.trampoline(),
+        Schedulers.trampoline())
   }
 
   @Before
@@ -79,6 +81,28 @@ class MarketPriceChartViewModelShould {
     assertThat(marketPriceChartResult?.status).isEqualTo(Status.ERROR)
     assertThat(marketPriceChartResult?.message).isEqualTo(A_DUMMY_ERROR_MESSAGE)
   }
+
+  @Test
+  fun postDataError_whenUseCaseErrored_with_dataError() {
+    given { getMarketPriceChartUseCase.getMarketPriceChart() }.willReturn(Flowable.error(NoDataException()))
+    given { stringProvider.provideString(com.smassive.bitcointicker.core.R.string.error_generic_no_data) }.willReturn(NO_DATA_ERROR)
+
+    val marketPriceChartResult = marketPriceChartViewModel.getMarketPriceChart().value
+
+    assertThat(marketPriceChartResult?.status).isEqualTo(Status.ERROR)
+    assertThat(marketPriceChartResult?.message).isEqualTo(NO_DATA_ERROR)
+  }
+
+  @Test
+  fun postUnknownError_whenUseCaseErrored_with_errorWithoutMessage() {
+    given { getMarketPriceChartUseCase.getMarketPriceChart() }.willReturn(Flowable.error(Exception()))
+    given { stringProvider.provideString(com.smassive.bitcointicker.core.R.string.error_generic_unknown) }.willReturn(UNKNOWN_ERROR)
+
+    val marketPriceChartResult = marketPriceChartViewModel.getMarketPriceChart().value
+
+    assertThat(marketPriceChartResult?.status).isEqualTo(Status.ERROR)
+    assertThat(marketPriceChartResult?.message).isEqualTo(UNKNOWN_ERROR)
+  }
 }
 
 private const val A_ONE_AND_A_HALF_LINE_LENGTH = 1.5F
@@ -95,3 +119,5 @@ private val A_DUMMY_MARKET_PRICE_CHART = MarketPriceChart(Unit.Usd, Period.Day, 
 private val A_DUMMY_MARKET_PRICE_CHART_VIEW_DATA =
     MarketPriceChartViewData(A_MARKET_PRICE_USD_TITLE, A_DUMMY_DESCRIPTION, LineData(A_CONFIGURED_DATA_SET))
 private const val A_DUMMY_ERROR_MESSAGE = "A_DUMMY_ERROR_MESSAGE"
+private const val NO_DATA_ERROR = "No data available"
+private const val UNKNOWN_ERROR = "Unknown error"
