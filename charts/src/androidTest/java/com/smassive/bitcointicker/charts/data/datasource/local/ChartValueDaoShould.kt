@@ -100,10 +100,9 @@ private const val ANOTHER_DUMMY_X_VALUE = 456.toDouble()
 private const val ANOTHER_DUMMY_Y_VALUE = 456.toDouble()
 private val ANOTHER_DUMMY_CHART_VALUE = ChartValueEntity(ANOTHER_DUMMY_X_VALUE, ANOTHER_DUMMY_Y_VALUE, A_DUMMY_CHART_NAME)
 private val A_ONE_ELEMENT_LIST_OF_CHART_VALUES = listOf(A_DUMMY_CHART_VALUE)
-
 private val A_TWO_ELEMENT_LIST_OF_CHART_VALUES = listOf(A_DUMMY_CHART_VALUE, ANOTHER_DUMMY_CHART_VALUE)
-private const val A_UNIT_USD = "USD"
 
+private const val A_UNIT_USD = "USD"
 private const val A_PERIOD_DAY = "day"
 private const val A_DUMMY_DESCRIPTION = "A dummy description"
 private val A_DUMMY_CHART_ENTITY = ChartEntity(A_DUMMY_CHART_NAME, A_UNIT_USD, A_PERIOD_DAY, A_DUMMY_DESCRIPTION)

@@ -45,7 +45,7 @@ class MarketPriceChartViewModelShould {
 
   @Before
   fun setUp() {
-    reset(getMarketPriceChartUseCase)
+    reset(getMarketPriceChartUseCase, stringProvider, dimenProvider)
     given { dimenProvider.provideDimen(R.dimen.chart_line_width) }.willReturn(A_ONE_AND_A_HALF_LINE_LENGTH)
     given { stringProvider.provideString(R.string.unit_usd) }.willReturn(A_UNIT_USD)
     given { stringProvider.provideString(R.string.market_price_title, A_UNIT_USD) }.willReturn(A_MARKET_PRICE_USD_TITLE)
