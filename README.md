@@ -1,5 +1,7 @@
 # Bitcoin Ticker
 
+[![Build Status](https://travis-ci.org/SmasSive/BitcoinTicker.svg?branch=master)](https://travis-ci.org/SmasSive/BitcoinTicker)
+
 An Android application that fetches information about the current Bitcoin market price and display the data in a line graph.
 
 This project aims to be a demonstration of a clean architecture implemented with:
