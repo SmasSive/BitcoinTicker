@@ -52,16 +52,16 @@ dependencies {
 
   androidTestImplementation "org.mockito:mockito-android:$mockito_version"
   androidTestImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
-  androidTestImplementation('com.schibsted.spain:barista:2.7.0') {
+  androidTestImplementation("com.schibsted.spain:barista:$barista_version") {
     exclude group: 'com.android.support'
     exclude group: 'com.android.support.test.espresso'
     exclude group: 'com.android.support.test.uiautomator'
     exclude group: 'org.jetbrains.kotlin'
   }
-  androidTestImplementation "androidx.test.espresso:espresso-core:3.1.0-beta01"
-  androidTestImplementation "androidx.test.espresso:espresso-contrib:3.1.0-beta01"
-  androidTestImplementation "androidx.test.uiautomator:uiautomator:2.2.0-beta02"
-  androidTestImplementation "androidx.test.espresso:espresso-intents:3.1.0-beta01"
+  androidTestImplementation "androidx.test.espresso:espresso-core:$androidx_espresso_version"
+  androidTestImplementation "androidx.test.espresso:espresso-contrib:$androidx_espresso_version"
+  androidTestImplementation "androidx.test.uiautomator:uiautomator:$androidx_uiautomator_version"
+  androidTestImplementation "androidx.test.espresso:espresso-intents:$androidx_espresso_version"
   androidTestImplementation "androidx.arch.core:core-testing:$lifecycle_version"
-  androidTestImplementation 'com.github.fabioCollini.daggermock:daggermock-kotlin:0.8.4'
+  androidTestImplementation "com.github.fabioCollini.daggermock:daggermock-kotlin:$dagger_mock_version"
 }
