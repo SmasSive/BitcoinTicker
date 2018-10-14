@@ -8,11 +8,10 @@ import dagger.Provides
 import javax.inject.Singleton
 
 @Module
-object ChartViewModelModule {
+class ChartViewModelModule {
 
   @Provides
   @Singleton
-  @JvmStatic
   fun provideMarketPriceChartViewModel(viewModelUtil: ViewModelUtil, marketPriceChartViewModel: MarketPriceChartViewModel): ViewModelProvider.Factory {
     return viewModelUtil.createFor(marketPriceChartViewModel)
   }

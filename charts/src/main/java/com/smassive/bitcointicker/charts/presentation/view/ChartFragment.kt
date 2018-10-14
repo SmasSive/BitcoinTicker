@@ -28,6 +28,9 @@ class ChartFragment : BaseFragment() {
   @Inject
   lateinit var viewModelFactory: ViewModelProvider.Factory
 
+  @Inject
+  lateinit var dateValueFormatter: DateValueFormatter
+
   override fun onActivityCreated(savedInstanceState: Bundle?) {
     super.onActivityCreated(savedInstanceState)
 
@@ -60,7 +63,7 @@ class ChartFragment : BaseFragment() {
       isDoubleTapToZoomEnabled = false
       isHighlightPerDragEnabled = false
       isHighlightPerTapEnabled = false
-      xAxis.valueFormatter = DateValueFormatter()
+      xAxis.valueFormatter = dateValueFormatter
       xAxis.position = XAxis.XAxisPosition.BOTTOM
     }
   }
