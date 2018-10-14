@@ -7,4 +7,5 @@ import androidx.room.PrimaryKey
 data class ChartEntity(@PrimaryKey val name: String,
                        val unit: String,
                        val period: String,
-                       val description: String)
+                       val description: String,
+                       val lastUpdate: Long)

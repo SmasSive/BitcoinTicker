@@ -1,5 +1,6 @@
 package com.smassive.bitcointicker.core.data.model.mapper
 
+import com.smassive.bitcointicker.core.util.toMillis
 import org.threeten.bp.DateTimeUtils
 import org.threeten.bp.Instant
 import java.util.Date
@@ -11,5 +12,3 @@ class DateMapper @Inject constructor() {
     return unixTimestamp.toMillis().let { timestampInMillis -> DateTimeUtils.toDate(Instant.ofEpochMilli(timestampInMillis)) }
   }
 }
-
-private fun Long.toMillis() = 1000 * this

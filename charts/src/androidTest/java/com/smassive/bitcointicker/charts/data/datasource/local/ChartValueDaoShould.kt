@@ -105,4 +105,5 @@ private val A_TWO_ELEMENT_LIST_OF_CHART_VALUES = listOf(A_DUMMY_CHART_VALUE, ANO
 private const val A_UNIT_USD = "USD"
 private const val A_PERIOD_DAY = "day"
 private const val A_DUMMY_DESCRIPTION = "A dummy description"
-private val A_DUMMY_CHART_ENTITY = ChartEntity(A_DUMMY_CHART_NAME, A_UNIT_USD, A_PERIOD_DAY, A_DUMMY_DESCRIPTION)
+private const val A_DUMMY_LAST_UPDATE = 123L
+private val A_DUMMY_CHART_ENTITY = ChartEntity(A_DUMMY_CHART_NAME, A_UNIT_USD, A_PERIOD_DAY, A_DUMMY_DESCRIPTION, A_DUMMY_LAST_UPDATE)

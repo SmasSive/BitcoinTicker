@@ -47,7 +47,8 @@ class ChartDaoShould {
       charts.first().name == A_DUMMY_NAME &&
           charts.first().unit == A_UNIT_USD &&
           charts.first().period == A_PERIOD_DAY &&
-          charts.first().description == A_DUMMY_DESCRIPTION
+          charts.first().description == A_DUMMY_DESCRIPTION &&
+          charts.first().lastUpdate == A_DUMMY_LAST_UPDATE
     }
   }
 
@@ -71,4 +72,5 @@ private const val A_DUMMY_NAME = "a_dummy_name"
 private const val A_UNIT_USD = "USD"
 private const val A_PERIOD_DAY = "day"
 private const val A_DUMMY_DESCRIPTION = "A dummy description"
-private val A_DUMMY_CHART_ENTITY = ChartEntity(A_DUMMY_NAME, A_UNIT_USD, A_PERIOD_DAY, A_DUMMY_DESCRIPTION)
+private const val A_DUMMY_LAST_UPDATE = 123L
+private val A_DUMMY_CHART_ENTITY = ChartEntity(A_DUMMY_NAME, A_UNIT_USD, A_PERIOD_DAY, A_DUMMY_DESCRIPTION, A_DUMMY_LAST_UPDATE)

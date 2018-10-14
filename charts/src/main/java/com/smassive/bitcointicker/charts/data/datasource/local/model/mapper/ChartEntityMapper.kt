@@ -6,7 +6,7 @@ import javax.inject.Inject
 
 class ChartEntityMapper @Inject constructor() {
 
-  fun map(chartMarketPriceDto: ChartMarketPriceDto, chartName: String): ChartEntity {
-    return with(chartMarketPriceDto) { ChartEntity(chartName, unit, period, description) }
+  fun map(chartMarketPriceDto: ChartMarketPriceDto, chartName: String, timestamp: Long): ChartEntity {
+    return with(chartMarketPriceDto) { ChartEntity(chartName, unit, period, description, timestamp) }
   }
 }
