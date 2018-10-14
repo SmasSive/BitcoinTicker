@@ -2,7 +2,7 @@ package com.smassive.bitcointicker.charts.data.datasource.local
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.room.Room
-import androidx.test.InstrumentationRegistry
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.runner.AndroidJUnit4
 import com.smassive.bitcointicker.charts.data.datasource.local.model.ChartEntity
 import com.smassive.bitcointicker.charts.infrastructure.database.ChartsDatabase
@@ -22,7 +22,7 @@ class ChartDaoShould {
 
   @Before
   fun setUp() {
-    chartsDatabase = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getContext(), ChartsDatabase::class.java).allowMainThreadQueries()
+    chartsDatabase = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getInstrumentation().context, ChartsDatabase::class.java).allowMainThreadQueries()
         .build()
   }
 

@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-allopen'
 
 android {
   compileSdkVersion rootProject.ext.compile_sdk_version
@@ -25,6 +26,10 @@ kapt {
   generateStubs = true
 }
 
+allOpen {
+  annotation("com.smassive.bitcointicker.core.infrastructure.annotation.OpenClass")
+}
+
 dependencies {
   implementation project(':core')
   implementation project(':charts')
@@ -44,6 +49,19 @@ dependencies {
   api "androidx.room:room-rxjava2:$room_version"
 
   testImplementation 'junit:junit:4.12'
-  androidTestImplementation 'androidx.test:runner:1.1.0-beta01'
-  androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0-beta01'
+
+  androidTestImplementation "org.mockito:mockito-android:$mockito_version"
+  androidTestImplementation "com.nhaarman:mockito-kotlin:$mockito_kotlin_version"
+  androidTestImplementation('com.schibsted.spain:barista:2.7.0') {
+    exclude group: 'com.android.support'
+    exclude group: 'com.android.support.test.espresso'
+    exclude group: 'com.android.support.test.uiautomator'
+    exclude group: 'org.jetbrains.kotlin'
+  }
+  androidTestImplementation "androidx.test.espresso:espresso-core:3.1.0-beta01"
+  androidTestImplementation "androidx.test.espresso:espresso-contrib:3.1.0-beta01"
+  androidTestImplementation "androidx.test.uiautomator:uiautomator:2.2.0-beta02"
+  androidTestImplementation "androidx.test.espresso:espresso-intents:3.1.0-beta01"
+  androidTestImplementation "androidx.arch.core:core-testing:$lifecycle_version"
+  androidTestImplementation 'com.github.fabioCollini.daggermock:daggermock-kotlin:0.8.4'
 }

@@ -1,5 +1,6 @@
 package com.smassive.bitcointicker.infrastructure.injector.component
 
+import com.smassive.bitcointicker.charts.infrastructure.injector.module.ChartDataModule
 import com.smassive.bitcointicker.core.infrastructure.injector.module.ActivityModule
 import com.smassive.bitcointicker.infrastructure.BitcoinTickerApplication
 import com.smassive.bitcointicker.infrastructure.injector.module.ApplicationModule
@@ -23,6 +24,10 @@ interface ApplicationComponent {
   interface Builder {
     @BindsInstance
     fun application(application: BitcoinTickerApplication): Builder
+
+    fun applicationModule(applicationModule: ApplicationModule): Builder
+
+    fun chartDataModule(chartDataModule: ChartDataModule): Builder
 
     fun build(): ApplicationComponent
   }
