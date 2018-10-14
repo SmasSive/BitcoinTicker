@@ -1,6 +1,6 @@
 package com.smassive.bitcointicker.charts.presentation.model.mapper
 
-import com.smassive.bitcointicker.core.R
+import com.smassive.bitcointicker.charts.R
 import com.smassive.bitcointicker.core.domain.model.Unit
 import com.smassive.bitcointicker.core.presentation.provider.StringProvider
 import javax.inject.Inject

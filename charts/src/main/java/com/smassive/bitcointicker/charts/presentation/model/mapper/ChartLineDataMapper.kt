@@ -3,8 +3,8 @@ package com.smassive.bitcointicker.charts.presentation.model.mapper
 import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
+import com.smassive.bitcointicker.charts.R
 import com.smassive.bitcointicker.charts.domain.model.TimePriceChartValue
-import com.smassive.bitcointicker.core.R
 import com.smassive.bitcointicker.core.presentation.provider.DimenProvider
 import javax.inject.Inject
 

@@ -7,13 +7,13 @@ import com.nhaarman.mockito_kotlin.given
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.reset
 import com.nhaarman.mockito_kotlin.verify
+import com.smassive.bitcointicker.charts.R
 import com.smassive.bitcointicker.charts.domain.model.MarketPriceChart
 import com.smassive.bitcointicker.charts.domain.usecase.GetMarketPriceChartUseCase
 import com.smassive.bitcointicker.charts.presentation.model.MarketPriceChartViewData
 import com.smassive.bitcointicker.charts.presentation.model.mapper.ChartLineDataMapper
 import com.smassive.bitcointicker.charts.presentation.model.mapper.MarketPriceChartViewDataMapper
 import com.smassive.bitcointicker.charts.presentation.model.mapper.UnitViewDataMapper
-import com.smassive.bitcointicker.core.R
 import com.smassive.bitcointicker.core.data.exception.NoDataException
 import com.smassive.bitcointicker.core.domain.model.Period
 import com.smassive.bitcointicker.core.domain.model.Unit
