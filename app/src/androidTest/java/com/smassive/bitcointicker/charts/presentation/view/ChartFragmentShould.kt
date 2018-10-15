@@ -6,9 +6,9 @@ import com.nhaarman.mockito_kotlin.mock
 import com.schibsted.spain.barista.assertion.BaristaVisibilityAssertions.assertDisplayed
 import com.schibsted.spain.barista.rule.BaristaRule
 import com.schibsted.spain.barista.rule.cleardata.ClearDatabaseRule
-import com.smassive.bitcointicker.charts.data.ChartRepository
 import com.smassive.bitcointicker.charts.domain.model.MarketPriceChart
 import com.smassive.bitcointicker.charts.domain.model.TimePriceChartValue
+import com.smassive.bitcointicker.charts.domain.repository.ChartRepository
 import com.smassive.bitcointicker.config.app
 import com.smassive.bitcointicker.config.getChartDaggerRule
 import com.smassive.bitcointicker.core.R
@@ -37,11 +37,11 @@ class ChartFragmentShould {
   @get:Rule
   val rule = InstantTaskExecutorRule()
 
-  private val chartRepository: ChartRepository = mock()
+  private val chartDataRepository: ChartRepository = mock()
 
   @Test
   fun show_aChart() {
-    given { chartRepository.getMarketPriceChart() }.willReturn(Flowable.just(A_DUMMY_MARKET_PRICE_CHART))
+    given { chartDataRepository.getMarketPriceChart() }.willReturn(Flowable.just(A_DUMMY_MARKET_PRICE_CHART))
 
     activityRule.launchActivity()
 
@@ -50,7 +50,7 @@ class ChartFragmentShould {
 
   @Test
   fun show_noDataError() {
-    given { chartRepository.getMarketPriceChart() }.willReturn(Flowable.error(NoDataException()))
+    given { chartDataRepository.getMarketPriceChart() }.willReturn(Flowable.error(NoDataException()))
 
     activityRule.launchActivity()
 

@@ -2,7 +2,7 @@ package com.smassive.bitcointicker.charts.infrastructure.injector.module
 
 import android.content.Context
 import androidx.room.Room
-import com.smassive.bitcointicker.charts.data.ChartRepository
+import com.smassive.bitcointicker.charts.data.ChartDataRepository
 import com.smassive.bitcointicker.charts.data.datasource.local.ChartDao
 import com.smassive.bitcointicker.charts.data.datasource.local.ChartLocalDatasource
 import com.smassive.bitcointicker.charts.data.datasource.local.ChartValueDao
@@ -12,6 +12,7 @@ import com.smassive.bitcointicker.charts.data.datasource.local.model.mapper.Char
 import com.smassive.bitcointicker.charts.data.datasource.local.model.mapper.ChartWithValuesMapper
 import com.smassive.bitcointicker.charts.data.datasource.remote.ChartsApiClient
 import com.smassive.bitcointicker.charts.data.datasource.remote.model.mapper.ChartMarketPriceDtoMapper
+import com.smassive.bitcointicker.charts.domain.repository.ChartRepository
 import com.smassive.bitcointicker.charts.infrastructure.database.ChartsDatabase
 import com.smassive.bitcointicker.charts.infrastructure.database.DB_NAME
 import com.smassive.bitcointicker.core.infrastructure.annotation.OpenClassOnDebug
@@ -33,7 +34,7 @@ class ChartDataModule {
                              chartEntityMapper: ChartEntityMapper,
                              chartValueEntityMapper: ChartValueEntityMapper,
                              chartWithValuesMapper: ChartWithValuesMapper): ChartRepository {
-    return ChartRepository(chartsApiClient, chartLocalDatasource, chartMarketPriceDtoMapper, chartWithValuesEntityMapper, chartEntityMapper,
+    return ChartDataRepository(chartsApiClient, chartLocalDatasource, chartMarketPriceDtoMapper, chartWithValuesEntityMapper, chartEntityMapper,
         chartValueEntityMapper, chartWithValuesMapper)
   }
 

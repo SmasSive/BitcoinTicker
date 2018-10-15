@@ -9,22 +9,22 @@ import com.smassive.bitcointicker.charts.data.datasource.remote.ChartsApiClient
 import com.smassive.bitcointicker.charts.data.datasource.remote.model.ChartNameDto
 import com.smassive.bitcointicker.charts.data.datasource.remote.model.mapper.ChartMarketPriceDtoMapper
 import com.smassive.bitcointicker.charts.domain.model.MarketPriceChart
+import com.smassive.bitcointicker.charts.domain.repository.ChartRepository
 import com.smassive.bitcointicker.core.data.exception.NoDataException
 import com.smassive.bitcointicker.core.infrastructure.annotation.OpenClassOnDebug
 import com.smassive.bitcointicker.core.util.toMillis
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 
-@OpenClassOnDebug
-class ChartRepository(private val chartsApiClient: ChartsApiClient,
-                      private val chartLocalDatasource: ChartLocalDatasource,
-                      private val chartMarketPriceDtoMapper: ChartMarketPriceDtoMapper,
-                      private val chartWithValuesEntityMapper: ChartWithValuesEntityMapper,
-                      private val chartEntityMapper: ChartEntityMapper,
-                      private val chartValueEntityMapper: ChartValueEntityMapper,
-                      private val chartWithValuesMapper: ChartWithValuesMapper) {
+class ChartDataRepository(private val chartsApiClient: ChartsApiClient,
+                          private val chartLocalDatasource: ChartLocalDatasource,
+                          private val chartMarketPriceDtoMapper: ChartMarketPriceDtoMapper,
+                          private val chartWithValuesEntityMapper: ChartWithValuesEntityMapper,
+                          private val chartEntityMapper: ChartEntityMapper,
+                          private val chartValueEntityMapper: ChartValueEntityMapper,
+                          private val chartWithValuesMapper: ChartWithValuesMapper) : ChartRepository {
 
-  fun getMarketPriceChart(): Flowable<MarketPriceChart> {
+  override fun getMarketPriceChart(): Flowable<MarketPriceChart> {
     return fetchDataFromLocal().onErrorResumeNext { _: Throwable ->
       fetchDataFromRemote().onErrorResumeNext { _: Throwable -> fetchDataFromLocal(true) }
     }

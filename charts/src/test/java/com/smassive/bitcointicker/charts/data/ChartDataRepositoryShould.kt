@@ -38,7 +38,7 @@ import org.junit.Test
 import org.threeten.bp.DateTimeUtils
 import org.threeten.bp.Instant
 
-class ChartRepositoryShould {
+class ChartDataRepositoryShould {
 
   @get:Rule
   val rule = InstantTaskExecutorRule()
@@ -56,7 +56,7 @@ class ChartRepositoryShould {
   private val chartEntityMapper = ChartEntityMapper()
   private val chartWithValuesMapper = ChartWithValuesMapper(unitMapper, periodMapper, chartValueEntityMapper)
 
-  private val chartRepository = ChartRepository(chartsApiClient, chartLocalDataSource, chartMarketPriceDtoMapper,
+  private val chartRepository = ChartDataRepository(chartsApiClient, chartLocalDataSource, chartMarketPriceDtoMapper,
       chartWithValuesEntityMapper, chartEntityMapper, chartValueEntityMapper, chartWithValuesMapper)
 
   @Before
