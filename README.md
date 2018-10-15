@@ -49,6 +49,8 @@ The main classes of the app are tested. Following the test pyramid, there are mo
 
 I've used tools like Mockito and Mockito Kotlin to mock dependencies between classes.
 
+You'll see an annotation `@OpenClassOnDebug`, this annotation is part of `kotlin-allopen` plugin that "opens" the Kotlin classes on debug just for testing purposes. As you know this is necessary because by default Kotlin classes are final and Mockito cannot mock them.
+
 I've made use of [Barista](https://github.com/SchibstedSpain/Barista) for UI tests, as they define it, Barista is the guy who serves a great Espresso.
 
 And thanks to [DaggerMock](https://github.com/fabioCollini/DaggerMock) I am able to replace dagger provided dependencies with mocks.
